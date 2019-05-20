@@ -1,14 +1,23 @@
 {
   "name": "pokemonservice",
+  "jest": {
+    "verbose": true,
+    "preset": "ts-jest"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^24.0.13",
+    "jest": "^24.8.0",
+    "pokedex-promise-v2": "^3.1.1",
+    "pokedex.js": "^2.3.0",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   }
 }
