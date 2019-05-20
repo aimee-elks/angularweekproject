@@ -7,13 +7,13 @@ export class Battle {
     tour: number;
 
     constructor(PokemonA: Pokemon, PokemonB: Pokemon) {
-        this.firstPokemon = PokemonA.level >= PokemonB.level ? PokemonA : PokemonB;
-        this.secondPokemon = PokemonA.level >= PokemonB.level ? PokemonB : PokemonA;
+        this.firstPokemon = PokemonA.level <= PokemonB.level ? PokemonA : PokemonB;
+        this.secondPokemon = PokemonA.level <= PokemonB.level ? PokemonB : PokemonA;
         this.tour = 1;
     }
 
 
-    fight() {
+    fight() : Pokemon {
         while(this.firstPokemon.life !== 0 && this.secondPokemon.life !== 0) {
 
             console.log('Tour n°' + this.tour.toString() + ':');
@@ -32,9 +32,14 @@ export class Battle {
             this.tour += 1;
         }
 
-        let winner : Pokemon = this.firstPokemon.life > this.secondPokemon.life ? this.firstPokemon : this.secondPokemon;
+        if (this.firstPokemon.life > this.secondPokemon.life) {
+            console.log('Le gagnant est : ' + this.firstPokemon.base.name);
+            return this.firstPokemon;
+        } else {
+            console.log('Le gagnant est : ' + this.secondPokemon.base.name);
+            return this.secondPokemon;
+        }
 
-        console.log('Le gagnant est : ' + winner.base.name);
     }
 
 

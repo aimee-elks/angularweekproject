@@ -2,8 +2,8 @@
 exports.__esModule = true;
 var Battle = /** @class */ (function () {
     function Battle(PokemonA, PokemonB) {
-        this.firstPokemon = PokemonA.level >= PokemonB.level ? PokemonA : PokemonB;
-        this.secondPokemon = PokemonA.level >= PokemonB.level ? PokemonB : PokemonA;
+        this.firstPokemon = PokemonA.level <= PokemonB.level ? PokemonA : PokemonB;
+        this.secondPokemon = PokemonA.level <= PokemonB.level ? PokemonB : PokemonA;
         this.tour = 1;
     }
     Battle.prototype.fight = function () {
@@ -21,8 +21,14 @@ var Battle = /** @class */ (function () {
             console.log(this.secondPokemon.base.name + ' - PV : ' + this.secondPokemon.life.toString());
             this.tour += 1;
         }
-        var winner = this.firstPokemon.life > this.secondPokemon.life ? this.firstPokemon : this.secondPokemon;
-        console.log('Le gagnant est : ' + winner.base.name);
+        if (this.firstPokemon.life > this.secondPokemon.life) {
+            console.log('Le gagnant est : ' + this.firstPokemon.base.name);
+            return this.firstPokemon;
+        }
+        else {
+            console.log('Le gagnant est : ' + this.secondPokemon.base.name);
+            return this.secondPokemon;
+        }
     };
     return Battle;
 }());
