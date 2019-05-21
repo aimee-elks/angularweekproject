@@ -13,14 +13,18 @@ export class Pokemon {
     constructor(name: string, stat : Statistiques = new Statistiques()) {
         this.base = PokemonService.getPokemon(name);
         this.IVStats = stat;
-        this.life = 50;
-        this.max_life = 50;
         this.level = 1;
+        this.life = this.getHitPoints();
+        this.max_life = this.getHitPoints();
     }
 
     levelUp(level:number = 1) {
         this.level += level;
-        this.max_life += (10*level);
+        this.max_life = this.getHitPoints();
+        this.fullLife();
+    }
+
+    fullLife() {
         this.life = this.max_life;
     }
 
