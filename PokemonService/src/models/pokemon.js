@@ -64,11 +64,12 @@ var Pokemon = /** @class */ (function () {
         var N = 1;
         return Math.floor(Math.floor((2 * B + I + E) * L / 100 + 5) * N);
     };
-    Pokemon.prototype.attack = function (otherPokemon, isSpecial) {
+    Pokemon.prototype.attack = function (otherPokemon, bonus_attack, isSpecial) {
+        if (bonus_attack === void 0) { bonus_attack = 1; }
         if (isSpecial === void 0) { isSpecial = false; }
         var L = this.level;
         var A = isSpecial === false ? this.getAttack() : this.getSpecialAttack();
-        var P = 1;
+        var P = bonus_attack;
         var D = isSpecial === false ? otherPokemon.getDefense() : this.getSpecialDefense();
         var damage = Math.floor(Math.floor(Math.floor(2 * L / 5 + 2) * A * P / D) / 50) + 2;
         otherPokemon.life -= damage;

@@ -10,12 +10,28 @@ var Battle = /** @class */ (function () {
         while (this.firstPokemon.life !== 0 && this.secondPokemon.life !== 0) {
             console.log('Tour n°' + this.tour.toString() + ':');
             if (this.tour % 2 === 0) {
-                this.secondPokemon.attack(this.firstPokemon);
-                console.log(this.secondPokemon.base.name + ' attaque ' + this.firstPokemon.base.name);
+                var min = 0;
+                var max = this.secondPokemon.base.ability.length - 1;
+                console.log(max);
+                var random_num = Math.floor(Math.random() * (+max - +min)) + +min;
+                console.log(random_num);
+                var ability = this.secondPokemon.base.ability[random_num];
+                console.log(ability);
+                var isSpecial = Boolean(Math.round(Math.random()));
+                this.secondPokemon.attack(this.firstPokemon, ability.name.length, isSpecial);
+                console.log(this.secondPokemon.base.name + ' lance une attaque "' + ability.name + '" sur ' + this.firstPokemon.base.name);
             }
             else {
-                this.firstPokemon.attack(this.secondPokemon);
-                console.log(this.firstPokemon.base.name + ' attaque ' + this.secondPokemon.base.name);
+                var min = 0;
+                var max = this.firstPokemon.base.ability.length - 1;
+                console.log(max);
+                var random_num = Math.floor(Math.random() * (+max - +min)) + +min;
+                console.log(random_num);
+                var ability = this.firstPokemon.base.ability[random_num];
+                console.log(ability);
+                var isSpecial = Boolean(Math.round(Math.random()));
+                this.firstPokemon.attack(this.secondPokemon, ability.name.length, isSpecial);
+                console.log(this.firstPokemon.base.name + ' lance une attaque "' + ability.name + '" sur ' + this.secondPokemon.base.name);
             }
             console.log(this.firstPokemon.base.name + ' - PV : ' + this.firstPokemon.life.toString());
             console.log(this.secondPokemon.base.name + ' - PV : ' + this.secondPokemon.life.toString());

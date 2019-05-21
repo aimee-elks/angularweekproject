@@ -1,4 +1,5 @@
 import {Pokemon} from "./pokemon";
+import {Ability} from "./abilily";
 
 export class Battle {
 
@@ -19,11 +20,23 @@ export class Battle {
             console.log('Tour n°' + this.tour.toString() + ':');
 
             if (this.tour % 2 === 0) {
-                this.secondPokemon.attack(this.firstPokemon);
-                console.log(this.secondPokemon.base.name + ' attaque ' + this.firstPokemon.base.name);
+                let min : number = 0;
+                let max : number = this.secondPokemon.base.ability.length-1;
+                let random_num : number = Math.floor(Math.random() * (+max - +min)) + +min;
+                let ability : Ability = this.secondPokemon.base.ability[random_num];
+                let isSpecial : boolean = Boolean(Math.round(Math.random()));
+
+                this.secondPokemon.attack(this.firstPokemon, ability.name.length, isSpecial);
+                console.log(this.secondPokemon.base.name + ' lance une attaque "'+ ability.name +'" sur ' + this.firstPokemon.base.name);
             } else {
-                this.firstPokemon.attack(this.secondPokemon);
-                console.log(this.firstPokemon.base.name + ' attaque ' + this.secondPokemon.base.name);
+                let min : number = 0;
+                let max : number = this.firstPokemon.base.ability.length-1;
+                let random_num : number = Math.floor(Math.random() * (+max - +min)) + +min;
+                let ability : Ability = this.firstPokemon.base.ability[random_num];
+                let isSpecial : boolean = Boolean(Math.round(Math.random()));
+
+                this.firstPokemon.attack(this.secondPokemon, ability.name.length, isSpecial);
+                console.log(this.firstPokemon.base.name + ' lance une attaque "'+ ability.name +'" sur ' + this.secondPokemon.base.name);
             }
 
             console.log(this.firstPokemon.base.name + ' - PV : ' + this.firstPokemon.life.toString());

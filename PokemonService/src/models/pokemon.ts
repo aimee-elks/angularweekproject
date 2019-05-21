@@ -90,11 +90,11 @@ export class Pokemon {
     }
 
 
-    attack(otherPokemon : Pokemon, isSpecial : boolean = false) {
+    attack(otherPokemon : Pokemon, bonus_attack: number = 1, isSpecial : boolean = false) {
 
         let L : number = this.level;
         let A : number = isSpecial === false ? this.getAttack() : this.getSpecialAttack();
-        let P : number = 1;
+        let P : number = bonus_attack;
         let D : number = isSpecial === false ? otherPokemon.getDefense() : this.getSpecialDefense();
 
         let damage : number = Math.floor(Math.floor(Math.floor(2 * L / 5 + 2) * A * P / D) / 50) + 2;
