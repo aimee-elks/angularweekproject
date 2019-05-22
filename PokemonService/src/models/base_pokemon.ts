@@ -1,27 +1,24 @@
 import {Statistiques} from "./statistiques";
-import {Ability} from "./abilily";
+import {Attack} from "./attack";
 
-export class Base_pokemon {
+export class BasePokemon {
 
     id: number;
     name : string;
     type: string[];
-    ability: Ability[];
-    eggGroup : string[];
-    generation: number;
+    color: string;
+    attacks: Attack[];
     baseStats: Statistiques;
+    EVStats: Statistiques;
 
 
-    constructor(id: number, name: string, type: string[], ability: Ability[], eggGroup: string[], generation: number, baseStats: Statistiques) {
+    constructor(id: number, name: string, type: string[], color: string, attacks: Attack[], baseStats: Statistiques, EVStats: Statistiques) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.ability = ability;
-        this.eggGroup = eggGroup;
-        this.generation = generation;
+        this.color = color;
+        this.attacks = attacks;
         this.baseStats = baseStats;
+        this.EVStats = EVStats;
     }
-
-
-
 }

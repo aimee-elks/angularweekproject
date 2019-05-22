@@ -1,15 +1,15 @@
 "use strict";
 exports.__esModule = true;
-var Base_pokemon = /** @class */ (function () {
-    function Base_pokemon(id, name, type, ability, eggGroup, generation, baseStats) {
+var BasePokemon = /** @class */ (function () {
+    function BasePokemon(id, name, type, color, attacks, baseStats, EVStats) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.ability = ability;
-        this.eggGroup = eggGroup;
-        this.generation = generation;
+        this.color = color;
+        this.attacks = attacks;
         this.baseStats = baseStats;
+        this.EVStats = EVStats;
     }
-    return Base_pokemon;
+    return BasePokemon;
 }());
-exports.Base_pokemon = Base_pokemon;
+exports.BasePokemon = BasePokemon;
